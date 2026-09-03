@@ -9,6 +9,8 @@ import AdminLayout from '@/layouts/AdminLayout'
 import TenantLayout from '@/layouts/TenantLayout'
 import PublicLayout from '@/layouts/PublicLayout'
 
+const PublicInvoice = lazy(() => import('@/pages/public/PublicInvoice'))
+
 // ─── Auth pages (not lazy – needed immediately) ───
 import LoginPage from '@/pages/auth/LoginPage'
 import RegisterPage from '@/pages/auth/RegisterPage'
@@ -131,6 +133,7 @@ export default function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/rooms" element={<RoomsAvailability />} />
                 <Route path="/enquiry" element={<EnquiryPage />} />
+                <Route path="/invoice/:id" element={<PublicInvoice />} />
               </Route>
 
               {/* ── Auth Routes ── */}
