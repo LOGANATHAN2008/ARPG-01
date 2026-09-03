@@ -64,14 +64,11 @@ export default function LiquidMobileNav() {
   return (
     <div className="lg:hidden fixed inset-x-0 bottom-6 z-[100] flex justify-center pointer-events-none px-4">
       {/* 
-        The entire navigation bar is draggable via Framer Motion. 
-        It snaps back to the center and bottom thanks to dragConstraints.
+        The navigation bar uses pointer events to allow swipe-to-select interaction,
+        but the bar itself is no longer draggable to prevent shaking/jittering.
       */}
       <motion.div
         ref={containerRef}
-        drag
-        dragConstraints={{ left: 0, right: 0, top: -150, bottom: 0 }}
-        dragElastic={0.15}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerLeave={handlePointerLeave}
