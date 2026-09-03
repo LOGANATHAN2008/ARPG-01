@@ -15,6 +15,7 @@ import { getUnreadCount } from '@/services/notificationService'
 import { subscribeToNotifications } from '@/services/notificationService'
 import toast from 'react-hot-toast'
 import logoImage from '@/assets/AR PG Logo.png'
+import LiquidMobileNav from '@/components/navigation/LiquidMobileNav'
 
 const NAV_GROUPS = [
 // ... (keeping existing nav groups)
@@ -298,98 +299,8 @@ export default function AdminLayout() {
         </main>
       </div>
 
-      {/* iOS Style Mobile Bottom Navigation (Floating Pill) */}
-      <div className="lg:hidden fixed bottom-6 left-4 right-4 z-50">
-        <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 flex justify-around items-center h-[72px] px-2 relative">
-          
-          <NavLink
-            to="/admin"
-            end
-            className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1.5 ${
-                isActive ? 'text-gray-800' : 'text-gray-400 hover:text-gray-500'
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <LayoutDashboard className={`w-6 h-6 transition-all duration-300 ${isActive ? 'stroke-[2.5px] scale-110' : 'stroke-[2px]'}`} />
-                <span className="text-[10px] font-semibold tracking-wide">Dashboard</span>
-              </>
-            )}
-          </NavLink>
-
-          <NavLink
-            to="/admin/tenants"
-            className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1.5 ${
-                isActive ? 'text-gray-800' : 'text-gray-400 hover:text-gray-500'
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <Users className={`w-6 h-6 transition-all duration-300 ${isActive ? 'stroke-[2.5px] scale-110' : 'stroke-[2px]'}`} />
-                <span className="text-[10px] font-semibold tracking-wide">Tenants</span>
-              </>
-            )}
-          </NavLink>
-
-          <NavLink
-            to="/admin/invoices"
-            className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1.5 relative z-10 ${
-                isActive ? 'text-[#c69a47]' : 'text-[#d4b26a]'
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                {/* Floating Gold Circle */}
-                <div className={`absolute -top-7 w-[60px] h-[60px] rounded-full flex items-center justify-center transition-all duration-300 shadow-xl ${
-                  isActive ? 'bg-[#b68c3e] shadow-[#d4b26a]/40 scale-105' : 'bg-[#d4b26a] shadow-[#d4b26a]/30'
-                }`}>
-                  <FileText className="w-7 h-7 text-white stroke-[2.5px]" />
-                </div>
-                <div className="h-7"></div> {/* Spacer */}
-                <span className="text-[11px] font-bold tracking-wide mt-1">Invoice</span>
-              </>
-            )}
-          </NavLink>
-
-          <NavLink
-            to="/admin/documents"
-            className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1.5 ${
-                isActive ? 'text-gray-800' : 'text-gray-400 hover:text-gray-500'
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <FolderOpen className={`w-6 h-6 transition-all duration-300 ${isActive ? 'stroke-[2.5px] scale-110' : 'stroke-[2px]'}`} />
-                <span className="text-[10px] font-semibold tracking-wide">Documents</span>
-              </>
-            )}
-          </NavLink>
-
-          <NavLink
-            to="/admin/settings"
-            className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1.5 ${
-                isActive ? 'text-gray-800' : 'text-gray-400 hover:text-gray-500'
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <UserCog className={`w-6 h-6 transition-all duration-300 ${isActive ? 'stroke-[2.5px] scale-110' : 'stroke-[2px]'}`} />
-                <span className="text-[10px] font-semibold tracking-wide">Profile</span>
-              </>
-            )}
-          </NavLink>
-        </div>
-      </div>
+      {/* iOS 26 Liquid Glass Mobile Bottom Navigation */}
+      <LiquidMobileNav />
     </div>
   )
 }
