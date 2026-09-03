@@ -62,7 +62,7 @@ export default function LiquidMobileNav() {
   const currentActive = previewTab || activeTab;
 
   return (
-    <div className="lg:hidden fixed inset-x-0 bottom-6 z-[100] flex justify-center pointer-events-none px-4">
+    <div className="lg:hidden fixed inset-x-0 bottom-6 z-30 flex justify-center pointer-events-none px-4">
       {/* 
         The navigation bar uses pointer events to allow swipe-to-select interaction,
         but the bar itself is no longer draggable to prevent shaking/jittering.
