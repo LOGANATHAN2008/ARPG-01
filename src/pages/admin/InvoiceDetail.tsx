@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { ArrowLeft, Printer, CheckCircle2, Clock, MapPin, Phone, Mail, Building2, User, Calendar, FileText, CheckCircle, Smartphone, Download } from 'lucide-react'
+import { ArrowLeft, Printer, CheckCircle2, Clock, MapPin, Phone, Mail, Building2, User, Calendar, FileText, CheckCircle, Smartphone, Download, AlertCircle } from 'lucide-react'
 import QRCode from 'react-qr-code'
 import { getInvoice, markInvoicePaid } from '@/services/invoiceService'
 import { getInvoiceSettings } from '@/services/settingsService'
