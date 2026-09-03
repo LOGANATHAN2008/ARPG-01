@@ -298,22 +298,23 @@ export default function AdminLayout() {
         </main>
       </div>
 
-      {/* iOS Style Mobile Bottom Navigation (Hidden on LG and up) */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-t border-gray-200/50 pb-[env(safe-area-inset-bottom,16px)] shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
-        <div className="flex justify-around items-center h-16 px-2">
+      {/* iOS Style Mobile Bottom Navigation (Floating Pill) */}
+      <div className="lg:hidden fixed bottom-6 left-4 right-4 z-50">
+        <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 flex justify-around items-center h-[72px] px-2 relative">
+          
           <NavLink
             to="/admin"
             end
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1 ${
-                isActive ? 'text-[#0a1a3a]' : 'text-gray-400 hover:text-gray-600'
+              `flex flex-col items-center justify-center w-16 gap-1.5 ${
+                isActive ? 'text-gray-800' : 'text-gray-400 hover:text-gray-500'
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <LayoutDashboard className={`w-6 h-6 transition-transform ${isActive ? 'scale-110 stroke-[2.5px]' : 'stroke-2'}`} />
-                <span className="text-[10px] font-medium tracking-tight">Dashboard</span>
+                <LayoutDashboard className={`w-6 h-6 transition-all duration-300 ${isActive ? 'stroke-[2.5px] scale-110' : 'stroke-[2px]'}`} />
+                <span className="text-[10px] font-semibold tracking-wide">Dashboard</span>
               </>
             )}
           </NavLink>
@@ -321,15 +322,15 @@ export default function AdminLayout() {
           <NavLink
             to="/admin/tenants"
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1 ${
-                isActive ? 'text-[#0a1a3a]' : 'text-gray-400 hover:text-gray-600'
+              `flex flex-col items-center justify-center w-16 gap-1.5 ${
+                isActive ? 'text-gray-800' : 'text-gray-400 hover:text-gray-500'
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <Users className={`w-6 h-6 transition-transform ${isActive ? 'scale-110 stroke-[2.5px]' : 'stroke-2'}`} />
-                <span className="text-[10px] font-medium tracking-tight">Tenants</span>
+                <Users className={`w-6 h-6 transition-all duration-300 ${isActive ? 'stroke-[2.5px] scale-110' : 'stroke-[2px]'}`} />
+                <span className="text-[10px] font-semibold tracking-wide">Tenants</span>
               </>
             )}
           </NavLink>
@@ -337,19 +338,21 @@ export default function AdminLayout() {
           <NavLink
             to="/admin/invoices"
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1 relative ${
-                isActive ? 'text-[#d4b26a]' : 'text-gray-400 hover:text-gray-600'
+              `flex flex-col items-center justify-center w-16 gap-1.5 relative z-10 ${
+                isActive ? 'text-[#c69a47]' : 'text-[#d4b26a]'
               }`
             }
           >
             {({ isActive }) => (
               <>
-                {/* Highlighted center button for Invoices */}
-                <div className={`absolute -top-6 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform ${isActive ? 'bg-[#0a1a3a] shadow-[#0a1a3a]/30 scale-110' : 'bg-[#d4b26a] shadow-[#d4b26a]/30'}`}>
-                  <FileText className={`w-5 h-5 text-white stroke-[2.5px]`} />
+                {/* Floating Gold Circle */}
+                <div className={`absolute -top-7 w-[60px] h-[60px] rounded-full flex items-center justify-center transition-all duration-300 shadow-xl ${
+                  isActive ? 'bg-[#b68c3e] shadow-[#d4b26a]/40 scale-105' : 'bg-[#d4b26a] shadow-[#d4b26a]/30'
+                }`}>
+                  <FileText className="w-7 h-7 text-white stroke-[2.5px]" />
                 </div>
-                <div className="h-6"></div> {/* Spacer for the floating icon */}
-                <span className={`text-[10px] font-medium tracking-tight mt-1 ${isActive ? 'text-[#0a1a3a]' : 'text-gray-400'}`}>Invoice</span>
+                <div className="h-7"></div> {/* Spacer */}
+                <span className="text-[11px] font-bold tracking-wide mt-1">Invoice</span>
               </>
             )}
           </NavLink>
@@ -357,15 +360,15 @@ export default function AdminLayout() {
           <NavLink
             to="/admin/documents"
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1 ${
-                isActive ? 'text-[#0a1a3a]' : 'text-gray-400 hover:text-gray-600'
+              `flex flex-col items-center justify-center w-16 gap-1.5 ${
+                isActive ? 'text-gray-800' : 'text-gray-400 hover:text-gray-500'
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <FolderOpen className={`w-6 h-6 transition-transform ${isActive ? 'scale-110 stroke-[2.5px]' : 'stroke-2'}`} />
-                <span className="text-[10px] font-medium tracking-tight">Documents</span>
+                <FolderOpen className={`w-6 h-6 transition-all duration-300 ${isActive ? 'stroke-[2.5px] scale-110' : 'stroke-[2px]'}`} />
+                <span className="text-[10px] font-semibold tracking-wide">Documents</span>
               </>
             )}
           </NavLink>
@@ -373,15 +376,15 @@ export default function AdminLayout() {
           <NavLink
             to="/admin/settings"
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-16 gap-1 ${
-                isActive ? 'text-[#0a1a3a]' : 'text-gray-400 hover:text-gray-600'
+              `flex flex-col items-center justify-center w-16 gap-1.5 ${
+                isActive ? 'text-gray-800' : 'text-gray-400 hover:text-gray-500'
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <UserCog className={`w-6 h-6 transition-transform ${isActive ? 'scale-110 stroke-[2.5px]' : 'stroke-2'}`} />
-                <span className="text-[10px] font-medium tracking-tight">Profile</span>
+                <UserCog className={`w-6 h-6 transition-all duration-300 ${isActive ? 'stroke-[2.5px] scale-110' : 'stroke-[2px]'}`} />
+                <span className="text-[10px] font-semibold tracking-wide">Profile</span>
               </>
             )}
           </NavLink>
