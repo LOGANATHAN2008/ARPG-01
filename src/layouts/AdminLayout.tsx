@@ -293,9 +293,99 @@ export default function AdminLayout() {
         </header>
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto p-4 lg:p-6">
+        <main className="flex-1 overflow-y-auto p-4 pb-28 lg:p-6 lg:pb-6">
           <Outlet />
         </main>
+      </div>
+
+      {/* iOS Style Mobile Bottom Navigation (Hidden on LG and up) */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-t border-gray-200/50 pb-[env(safe-area-inset-bottom,16px)] shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+        <div className="flex justify-around items-center h-16 px-2">
+          <NavLink
+            to="/admin"
+            end
+            className={({ isActive }) =>
+              `flex flex-col items-center justify-center w-16 gap-1 ${
+                isActive ? 'text-[#0a1a3a]' : 'text-gray-400 hover:text-gray-600'
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <LayoutDashboard className={`w-6 h-6 transition-transform ${isActive ? 'scale-110 stroke-[2.5px]' : 'stroke-2'}`} />
+                <span className="text-[10px] font-medium tracking-tight">Dashboard</span>
+              </>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/admin/tenants"
+            className={({ isActive }) =>
+              `flex flex-col items-center justify-center w-16 gap-1 ${
+                isActive ? 'text-[#0a1a3a]' : 'text-gray-400 hover:text-gray-600'
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <Users className={`w-6 h-6 transition-transform ${isActive ? 'scale-110 stroke-[2.5px]' : 'stroke-2'}`} />
+                <span className="text-[10px] font-medium tracking-tight">Tenants</span>
+              </>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/admin/invoices"
+            className={({ isActive }) =>
+              `flex flex-col items-center justify-center w-16 gap-1 relative ${
+                isActive ? 'text-[#d4b26a]' : 'text-gray-400 hover:text-gray-600'
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                {/* Highlighted center button for Invoices */}
+                <div className={`absolute -top-6 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform ${isActive ? 'bg-[#0a1a3a] shadow-[#0a1a3a]/30 scale-110' : 'bg-[#d4b26a] shadow-[#d4b26a]/30'}`}>
+                  <FileText className={`w-5 h-5 text-white stroke-[2.5px]`} />
+                </div>
+                <div className="h-6"></div> {/* Spacer for the floating icon */}
+                <span className={`text-[10px] font-medium tracking-tight mt-1 ${isActive ? 'text-[#0a1a3a]' : 'text-gray-400'}`}>Invoice</span>
+              </>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/admin/documents"
+            className={({ isActive }) =>
+              `flex flex-col items-center justify-center w-16 gap-1 ${
+                isActive ? 'text-[#0a1a3a]' : 'text-gray-400 hover:text-gray-600'
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <FolderOpen className={`w-6 h-6 transition-transform ${isActive ? 'scale-110 stroke-[2.5px]' : 'stroke-2'}`} />
+                <span className="text-[10px] font-medium tracking-tight">Documents</span>
+              </>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/admin/settings"
+            className={({ isActive }) =>
+              `flex flex-col items-center justify-center w-16 gap-1 ${
+                isActive ? 'text-[#0a1a3a]' : 'text-gray-400 hover:text-gray-600'
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <UserCog className={`w-6 h-6 transition-transform ${isActive ? 'scale-110 stroke-[2.5px]' : 'stroke-2'}`} />
+                <span className="text-[10px] font-medium tracking-tight">Profile</span>
+              </>
+            )}
+          </NavLink>
+        </div>
       </div>
     </div>
   )
