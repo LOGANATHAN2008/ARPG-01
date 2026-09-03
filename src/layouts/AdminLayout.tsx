@@ -166,15 +166,20 @@ export default function AdminLayout() {
       {/* User */}
       <div className={`px-3 py-4 border-t border-border space-y-1`}>
         {!collapsed && (
-          <div className="flex items-center gap-3 px-3 py-2 mb-2">
-            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs flex-shrink-0">
+          <NavLink
+            to="/admin/settings"
+            onClick={() => setMobileOpen(false)}
+            className="flex items-center gap-3 px-3 py-2 mb-2 rounded-xl hover:bg-accent/50 cursor-pointer transition-colors border border-transparent hover:border-border/50 group"
+          >
+            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
               {profile?.full_name?.charAt(0) || 'A'}
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-foreground truncate">{profile?.full_name}</p>
-              <p className="text-xs text-muted-foreground capitalize">{profile?.role?.replace('_', ' ')}</p>
+              <p className="text-[10px] text-muted-foreground capitalize">{profile?.role?.replace('_', ' ')}</p>
             </div>
-          </div>
+            <UserCog className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+          </NavLink>
         )}
         <button
           onClick={() => setDark(!dark)}
